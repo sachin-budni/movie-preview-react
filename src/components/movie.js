@@ -8,7 +8,15 @@ import no_poster from './../no_poster.jpg';
 export default class Movie extends Component {
     redictToCurrentMovie = (id) => {
         const { pathname } = this.props.routes.location;
-        this.props.routes.push(pathname + "/" + id)
+        var temp = pathname;
+        var count = (temp.match(/[/]/g) || []).length;
+        if(count !== 1) {
+            const name = temp.substring(0, temp.indexOf('/', 2));
+            this.props.routes.push(name + "/" + id)
+            this.props.changeMovie(id)
+        } else {
+            this.props.routes.push(pathname + "/" + id)
+        }
     }
 
     render() {
@@ -30,7 +38,7 @@ export default class Movie extends Component {
                     })}
                 </div>
                 {movie && movie.page &&
-                    <div style={{width: '100%', padding: '10px', background: 'rgb(0,0,0,0.8)'}}>
+                    <div style={{width: '100%', padding: '10px'}}>
                         <div style={{display: 'flex', flexDirection: 'row', justifyContent: "flex-end"}}>
                             <p>page {movie.page} of {movie.total_pages}</p>
                             <IconButton aria-label="delete" disabled={movie.page === 1}  onClick={() => this.props.nextPage(movie.page-1)}>

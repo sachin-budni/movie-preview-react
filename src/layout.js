@@ -7,6 +7,7 @@ import PopularMovie from './components/popularmovie';
 import NowPlayingMovie from './components/now-playingmovies';
 import LatestMovie from './components/latestmovies';
 import TopRatedMovie from './components/top-ratedmovies';
+import TrendingChart from './components/trendingcharts';
 import UpCommingMovie from './components/upcommingmovies';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { MovieDeails } from './components/movie-details';
@@ -120,6 +121,7 @@ export default function ResponsiveDrawer(props) {
                 <Route path="/latestmovies" exact component={LatestMovie} />
                 <Route path="/topratedmovies" exact component={TopRatedMovie} />
                 <Route path="/nowplayingmovies" exact component={NowPlayingMovie} />
+                <Route path="/trendingchart" exact component={TrendingChart} />
                 <Route path="/popularmovies/:id" exact component={MovieDeails} />
                 <Route path="/upcommingmovies/:id" exact component={MovieDeails} />
                 <Route path="/topratedmovies/:id" exact component={MovieDeails} />
